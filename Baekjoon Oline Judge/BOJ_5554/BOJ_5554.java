@@ -1,4 +1,3 @@
-// 백준 5554번: 심부름 가는 길
 
 import java.util.Scanner;
 
