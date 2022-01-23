@@ -39,17 +39,12 @@ public class BOJ_1157 {
 	int large=count[0];
 	int mostchar=65;
 	
-	for(int i=0; i<26; i++) {
+	for(int i=1; i<26; i++) {
 		if(large < count[i]) {
 			large = count[i];
 			mostchar=65+i;
-		}
-	}
-	
-	//가장 많은 알파벳이 여러 개일 때
-	for(int i=0; i<26; i++) {
-		if((large == count[i])&&(mostchar!=65+i)) {
-			mostchar = 63;  //63='?'
+		}else if(large == count[i]){
+			mostchar=63;
 		}
 	}
 
