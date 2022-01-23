@@ -1,18 +1,58 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
-
-//¾ËÆÄºª ´ë¼Ò¹®ÀÚ·Î µÈ ´Ü¾î°¡ ÁÖ¾îÁö¸é, ÀÌ ´Ü¾î¿¡¼­ °¡Àå ¸¹ÀÌ »ç¿ëµÈ ¾ËÆÄºªÀÌ ¹«¾ùÀÎÁö ¾Ë¾Æ³»´Â ÇÁ·Î±×·¥À» ÀÛ¼ºÇÏ½Ã¿À. ´Ü, ´ë¹®ÀÚ¿Í ¼Ò¹®ÀÚ¸¦ ±¸ºĞÇÏÁö ¾Ê´Â´Ù.
 
 public class BOJ_1157 {
-	public static void main(String[] args) throws IOException {  // ¿¹¿ÜÃ³¸®
-	BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); //¼±¾ğ
-	String s = br.readLine();  // ¹®ÀÚ¿­. Line´ÜÀ§·Î¸¸ ³ª´²Áü.
-	StringTokenizer st = new StringTokenizer(s); //ÀÔ·ÂµÈ int°ªµéÀ» ¹®ÀÚ¿­·Î º¯È¯
+	public static void main(String[] args) throws IOException { 
+	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	String s = br.readLine(); 
 	
-	int a = Integer.parseInt(st.nextToken()); 
+	//ë°°ì—´ ìƒì„±
+	char[] arr = new char[s.length()];
+	
+	//ë°°ì—´ ê°’ í• ë‹¹
+	for(int i=0; i<s.length(); i++) {
+		arr[i] = s.charAt(i);
+	}
+	
+	//ì†Œë¬¸ìë¥¼ ëŒ€ë¬¸ìë¡œ
+	for(int j=0; j<32; j++) {
+		for(int i=0; i<arr.length; i++) {
+			if((int)arr[i] == 97+j) {
+				arr[i] = (char)(65+j); 
+			}
+		}
+	}
+	
+	//ì•ŒíŒŒë²³ ê°œìˆ˜ ì„¸ê¸°
+	int[] count= new int[26];
+	
+	for(int j=0; j<26; j++) {
+		for(int i=0; i<arr.length; i++) {
+			if((int)arr[i] == 65+j) {
+				count[j]++;
+			}
+		}
+	}
+	
+	//ê°€ì¥ ë§ì€ ì•ŒíŒŒë²³ êµ¬í•˜ê¸°
+	int large=count[0];
+	int mostchar=65;
+	
+	for(int i=0; i<26; i++) {
+		if(large < count[i]) {
+			large = count[i];
+			mostchar=65+i;
+		}
+	}
+	
+	//ê°€ì¥ ë§ì€ ì•ŒíŒŒë²³ì´ ì—¬ëŸ¬ ê°œì¼ ë•Œ
+	for(int i=0; i<26; i++) {
+		if((large == count[i])&&(mostchar!=65+i)) {
+			mostchar = 63;  //63='?'
+		}
+	}
 
-
+		System.out.println((char)(mostchar));
 	}
 }
