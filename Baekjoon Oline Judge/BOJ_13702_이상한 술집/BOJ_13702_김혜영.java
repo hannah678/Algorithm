@@ -17,11 +17,11 @@ public class BOJ_13702_김혜영 {
 		for(int i=0; i<N; i++) {
 			arr[i] = Integer.parseInt(br.readLine());
 		}
-		insertSort(arr);
+		insertSort(arr);//내림차순 정렬
 		
-		int num=0;
-		long mak=0;
-		int i=1;
+		int num=0;	//마실 수 있는 총 인원
+		long mak=0;	//나눈 막걸리 용량
+		int i=1; 	//제일 큰 막걸리 용량을 나눌 인원
 		
 		while(num<K) {
 			num=i;
@@ -33,10 +33,11 @@ public class BOJ_13702_김혜영 {
 		}
 		System.out.println(mak);	
 	}
+	
+	//내림차순 정렬
 	private static void insertSort(long[] array) {
 		long temp = 0;
 		int j = 0;
-		
 		for(int i=1; i<array.length; i++){
 			temp = array[i];
 			j = i;
@@ -45,7 +46,6 @@ public class BOJ_13702_김혜영 {
 				j--; 
 			}
 			array[j] = temp;
-			
 		}
 	}
 }
