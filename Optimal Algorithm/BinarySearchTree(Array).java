@@ -1,7 +1,7 @@
 public class BinarySearchTree {
 	public static void main(String[] args) {
 		 
-        int[] arr = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        int[] arr = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }; //오름차순 정렬된 배열
         Tree t = new Tree();
         t.makeTree(arr); 			//배열 입력
         t.searchBtree(t.root, 2); 	//검색할 데이터 입력
